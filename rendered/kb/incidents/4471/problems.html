@@ -9,11 +9,11 @@
 		<link href="../../../_app/immutable/chunks/B2Ul7l_u.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BCPXOG7W.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/Dh1V97Jm.js" rel="modulepreload">
-		<link href="../../../_app/immutable/entry/app.asd2iK0O.js" rel="modulepreload">
+		<link href="../../../_app/immutable/entry/app.MuNfm9WQ.js" rel="modulepreload">
 		<link href="../../../_app/immutable/nodes/0.C9KfiiPz.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
-		<link href="../../../_app/immutable/nodes/5.DCHcEMlf.js" rel="modulepreload">
-		<link href="../../../_app/immutable/chunks/Dxyy-4vc.js" rel="modulepreload">
+		<link href="../../../_app/immutable/nodes/5.Dc0tLqg8.js" rel="modulepreload">
+		<link href="../../../_app/immutable/chunks/Db1GcJmg.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BTPwLomz.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/D_eX76ox.js" rel="modulepreload">
 		<link href="../../../_app/immutable/chunks/BIy4WKJS.js" rel="modulepreload">
@@ -32,39 +32,39 @@ aside.svelte-17bri61{border-left:4px solid var(--accent);background:var(--note-b
 		<link href="../../../_app/immutable/assets/_page.WePi3wDe.css" rel="stylesheet" disabled media="(max-width: 0)">
   </head>
   <body>
-    <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · one ticket per problem</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-29 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> is marked known: one issue, one fix queued. The reports merged into it
-describe more than one problem, and the queued parser fix closes only one of them. Each problem now
-has its own ticket.</p> <aside class="warn svelte-17bri61"><!---->Fixing the parser does not close #4471. The form hint and the one-day moves stay broken.<!----></aside><!----> <h2>The problems</h2> <p>The counts are the desk’s own: the cause table from the #4471 page, on the export as it came.</p> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <ul><li><code>parser</code>, <a href="https://github.com/dudziakm/mega-s01e03-support-kb/issues/1" rel="nofollow">#1</a>, the <code>parser</code> row:
-the shared parser reads every date month first, so a tenant that writes the day first gets day
-and month swapped. “Our 7 April reminder went out on 4 July.” It comes in by every channel, from
-every tenant.</li> <li><code>hint</code>, <a href="https://github.com/dudziakm/mega-s01e03-support-kb/issues/2" rel="nofollow">#2</a>, the <code>hint</code> row:
-booking-v3’s form prints <code>MM/DD/YYYY</code> under its date field, then reads the date day first, the
-tenant’s way. People type what the hint says and get the same swap. Only form reports from
-booking-v3 tenants. This form reads the date itself, so the parser fix does not reach it. The
-table still says it has no ticket of its own; #2 is that ticket.</li> <li><code>one-day move</code>, <a href="https://github.com/dudziakm/mega-s01e03-support-kb/issues/3" rel="nofollow">#3</a>, the note
-under the table: the date moves by one day; day and month stay where they are. “Invite says
-Tuesday 12 May. Calendar says Monday 11 May.” “Client in Lisbon got Tuesday. Client in Toronto
-got Monday.” The desk files these under <code>parser</code> by tenant and counts them there, so #1 includes
-them. A parser fix will not move them back.</li></ul> <h2>How the desk counts</h2> <ol><li>One id, one report: the export repeats reports where its pages overlap.</li> <li>A report goes under its tenant’s cause (<code>causes.ts</code>): a form report from a booking-v3 tenant
+    <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · one ticket per problem</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status closed svelte-e2jw2j">closed</span> <span class="svelte-e2jw2j">reviewed 2026-10-29 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> was marked known as one issue with one fix queued. The reports merged
+into it describe more than one problem, so each problem got its own ticket. Engineering closed
+#4471 on 5 October: the parser is fixed, and the hint will not be fixed because the booking-v3 form
+is retired.</p> <aside class="warn svelte-17bri61"><!---->The parser fix does not explain a date that moves by one day. If one-day moves keep coming in,
+reopen #3.<!----></aside><!----> <h2>The problems</h2> <p>The counts are the desk’s own: the cause table from the #4471 page, on the export as it came.</p> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <ul><li><code>parser</code>, <a href="https://github.com/dudziakm/mega-s01e03-support-kb/issues/1" rel="nofollow">#1</a>, the <code>parser</code> row. Closed as fixed by <code>fix(dates): parse dd/mm for eu locales</code>. The shared parser read every date month first, so a
+tenant that writes the day first got day and month swapped. “Our 7 April reminder went out on
+4 July.” It came in by every channel, from every tenant.</li> <li><code>hint</code>, <a href="https://github.com/dudziakm/mega-s01e03-support-kb/issues/2" rel="nofollow">#2</a>, the <code>hint</code> row. Closed as won’t fix: the booking-v3
+form is retired. The form printed <code>MM/DD/YYYY</code> under its date field, then read the date day
+first, the tenant’s way. People typed what the hint said and got the same swap. Only form reports
+from booking-v3 tenants, and the parser fix did not reach this form. The table says it has no
+ticket of its own; #2 is that ticket.</li> <li><code>one-day move</code>, <a href="https://github.com/dudziakm/mega-s01e03-support-kb/issues/3" rel="nofollow">#3</a>, the note under the table. Closed with the parser
+fix, because the desk files these reports under <code>parser</code> by tenant and counts them there, so #1
+includes them. Here the date moves by one day, while day and month stay where they are: “Invite
+says Tuesday 12 May. Calendar says Monday 11 May.” “Client in Lisbon got Tuesday. Client in
+Toronto got Monday.”</li></ul> <h2>How the desk counts</h2> <ol><li>One id, one report: the export repeats reports where its pages overlap.</li> <li>A report goes under its tenant’s cause (<code>causes.ts</code>): a form report from a booking-v3 tenant
 that writes the day first is <code>hint</code>; any other report from a day-first tenant is <code>parser</code>.</li> <li>A report the desk read differently (its notes) stays counted where it is filed, with a note
 under the table.</li></ol> <p>Intake’s tag is not used: it guesses from the reporter’s browser, not from the tenant.</p> <h2>Why one ticket held them all</h2> <p><a href="/kb/decisions/0001-dedupe-by-subject">Decision 0001</a> merges reports whose subject lines match. The
 same subject lines come in for different problems, so matching on subjects cannot keep these
-problems apart. Changing that rule needs a new decision record; 0001 stays as accepted.</p> <h2>While the desk keeps merging</h2> <p>The table reads the ticket export and the desk notes at render time. A report merged into #4471
-later, or one more one-day move in the desk notes, changes the counts on this page without an edit.
-The counts in the tickets are from the export of 4 October.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-J7QS-4Q8H</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+problems apart. Changing that rule needs a new decision record; 0001 stays as accepted.</p> <h2>When the export changes</h2> <p>The table reads the ticket export and the desk notes at render time, so a newer export changes the
+counts on this page without an edit. The counts in the tickets are from the export of 4 October.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-HVX2-7RRZ</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
 			
 			<script>
 				{
-					__sveltekit_ba1wet = {
+					__sveltekit_1c9mjf8 = {
 						base: new URL("../../..", location).pathname.slice(0, -1),
-						version: "1793282860903"
+						version: "1793283651710"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("../../../_app/immutable/entry/start.CH5w6lId.js").then(async (kit) => {
-						kit.init(__sveltekit_ba1wet);
-						const app = await import("../../../_app/immutable/entry/app.asd2iK0O.js");
+						kit.init(__sveltekit_1c9mjf8);
+						const app = await import("../../../_app/immutable/entry/app.MuNfm9WQ.js");
 						kit.start(app, element, {
 							node_ids: [0, 5],
 							data: [null,null],

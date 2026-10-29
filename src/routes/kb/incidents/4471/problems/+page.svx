@@ -2,9 +2,9 @@
 layout: runbook
 title: '#4471 · one ticket per problem'
 owner: support desk
-status: open
+status: closed
 reviewed: 2026-10-29
-signature: Michal Dudziak (dudziakm)
+signature: v1.eyJzdWIiOiIxNjQxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyODM1MDMsImV4cCI6MTc5MzM2OTkwM30.lTzbEXnwrp3f-wxcV17g15GWXyTEsEvzBSmG8uLpvqA
 ---
 
 <script>
@@ -13,12 +13,14 @@ signature: Michal Dudziak (dudziakm)
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 </script>
 
-[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. The reports merged into it
-describe more than one problem, and the queued parser fix closes only one of them. Each problem now
-has its own ticket.
+[#4471](/kb/incidents/4471) was marked known as one issue with one fix queued. The reports merged
+into it describe more than one problem, so each problem got its own ticket. Engineering closed
+#4471 on 5 October: the parser is fixed, and the hint will not be fixed because the booking-v3 form
+is retired.
 
 <Callout kind="warn">
-Fixing the parser does not close #4471. The form hint and the one-day moves stay broken.
+The parser fix does not explain a date that moves by one day. If one-day moves keep coming in,
+reopen #3.
 </Callout>
 
 ## The problems
@@ -27,20 +29,20 @@ The counts are the desk's own: the cause table from the #4471 page, on the expor
 
 <CauseTable ticket={4471} />
 
-- `parser`, [#1](https://github.com/dudziakm/mega-s01e03-support-kb/issues/1), the `parser` row:
-  the shared parser reads every date month first, so a tenant that writes the day first gets day
-  and month swapped. "Our 7 April reminder went out on 4 July." It comes in by every channel, from
-  every tenant.
-- `hint`, [#2](https://github.com/dudziakm/mega-s01e03-support-kb/issues/2), the `hint` row:
-  booking-v3's form prints `MM/DD/YYYY` under its date field, then reads the date day first, the
-  tenant's way. People type what the hint says and get the same swap. Only form reports from
-  booking-v3 tenants. This form reads the date itself, so the parser fix does not reach it. The
-  table still says it has no ticket of its own; #2 is that ticket.
-- `one-day move`, [#3](https://github.com/dudziakm/mega-s01e03-support-kb/issues/3), the note
-  under the table: the date moves by one day; day and month stay where they are. "Invite says
-  Tuesday 12 May. Calendar says Monday 11 May." "Client in Lisbon got Tuesday. Client in Toronto
-  got Monday." The desk files these under `parser` by tenant and counts them there, so #1 includes
-  them. A parser fix will not move them back.
+- `parser`, [#1](https://github.com/dudziakm/mega-s01e03-support-kb/issues/1), the `parser` row. Closed as fixed by
+  `fix(dates): parse dd/mm for eu locales`. The shared parser read every date month first, so a
+  tenant that writes the day first got day and month swapped. "Our 7 April reminder went out on
+  4 July." It came in by every channel, from every tenant.
+- `hint`, [#2](https://github.com/dudziakm/mega-s01e03-support-kb/issues/2), the `hint` row. Closed as won't fix: the booking-v3
+  form is retired. The form printed `MM/DD/YYYY` under its date field, then read the date day
+  first, the tenant's way. People typed what the hint said and got the same swap. Only form reports
+  from booking-v3 tenants, and the parser fix did not reach this form. The table says it has no
+  ticket of its own; #2 is that ticket.
+- `one-day move`, [#3](https://github.com/dudziakm/mega-s01e03-support-kb/issues/3), the note under the table. Closed with the parser
+  fix, because the desk files these reports under `parser` by tenant and counts them there, so #1
+  includes them. Here the date moves by one day, while day and month stay where they are: "Invite
+  says Tuesday 12 May. Calendar says Monday 11 May." "Client in Lisbon got Tuesday. Client in
+  Toronto got Monday."
 
 ## How the desk counts
 
@@ -58,10 +60,9 @@ Intake's tag is not used: it guesses from the reporter's browser, not from the t
 same subject lines come in for different problems, so matching on subjects cannot keep these
 problems apart. Changing that rule needs a new decision record; 0001 stays as accepted.
 
-## While the desk keeps merging
+## When the export changes
 
-The table reads the ticket export and the desk notes at render time. A report merged into #4471
-later, or one more one-day move in the desk notes, changes the counts on this page without an edit.
-The counts in the tickets are from the export of 4 October.
+The table reads the ticket export and the desk notes at render time, so a newer export changes the
+counts on this page without an edit. The counts in the tickets are from the export of 4 October.
 
 <RenderStamp {signature} />
