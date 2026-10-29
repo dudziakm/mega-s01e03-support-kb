@@ -9,15 +9,8 @@ signature: Michal Dudziak (dudziakm)
 
 <script>
   import Callout from '#lib/kb/Callout.svelte';
-  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
-
-  const issues = 'https://github.com/dudziakm/mega-s01e03-support-kb/issues';
-  const tickets = {
-    parser: { href: `${issues}/1`, label: '#1' },
-    hint: { href: `${issues}/2`, label: '#2' },
-    'one-day move': { href: `${issues}/3`, label: '#3' },
-  };
 </script>
 
 [#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. The reports merged into it
@@ -30,35 +23,40 @@ Fixing the parser does not close #4471. The form hint and the one-day moves stay
 
 ## The problems
 
-<ProblemTable ticket={4471} {tickets} />
+The counts are the desk's own: the cause table from the #4471 page, on the export as it came.
 
-- `parser` ([#1](https://github.com/dudziakm/mega-s01e03-support-kb/issues/1)): the shared parser
-  reads every date month first, so a tenant that writes the day first gets day and month swapped.
-  "Our 7 April reminder went out on 4 July." It comes in by every channel, from every tenant.
-- `hint` ([#2](https://github.com/dudziakm/mega-s01e03-support-kb/issues/2)): booking-v3's form
-  prints `MM/DD/YYYY` under its date field, then reads the date day first, the tenant's way. People
-  type what the hint says and get the same swap. Only form reports from booking-v3 tenants. This form
-  reads the date itself, so the parser fix does not reach it.
-- `one-day move` ([#3](https://github.com/dudziakm/mega-s01e03-support-kb/issues/3)): the date
-  moves by one day; day and month stay where they are. "Invite says Tuesday 12 May. Calendar says
-  Monday 11 May." "Client in Lisbon got Tuesday. Client in Toronto got Monday." The desk already read
-  these as one-day moves in its notes, but the cause table on #4471 still counts them under `parser`.
+<CauseTable ticket={4471} />
 
-## How each report is placed
+- `parser`, [#1](https://github.com/dudziakm/mega-s01e03-support-kb/issues/1), the `parser` row:
+  the shared parser reads every date month first, so a tenant that writes the day first gets day
+  and month swapped. "Our 7 April reminder went out on 4 July." It comes in by every channel, from
+  every tenant.
+- `hint`, [#2](https://github.com/dudziakm/mega-s01e03-support-kb/issues/2), the `hint` row:
+  booking-v3's form prints `MM/DD/YYYY` under its date field, then reads the date day first, the
+  tenant's way. People type what the hint says and get the same swap. Only form reports from
+  booking-v3 tenants. This form reads the date itself, so the parser fix does not reach it. The
+  table still says it has no ticket of its own; #2 is that ticket.
+- `one-day move`, [#3](https://github.com/dudziakm/mega-s01e03-support-kb/issues/3), the note
+  under the table: the date moves by one day; day and month stay where they are. "Invite says
+  Tuesday 12 May. Calendar says Monday 11 May." "Client in Lisbon got Tuesday. Client in Toronto
+  got Monday." The desk files these under `parser` by tenant and counts them there, so #1 includes
+  them. A parser fix will not move them back.
+
+## How the desk counts
 
 1. One id, one report: the export repeats reports where its pages overlap.
-2. A report the desk read as a one-day move is a `one-day move`.
-3. Every other report goes by its tenant, as `causes.ts` does: a form report from a booking-v3
-   tenant that writes the day first is `hint`; any other report from a day-first tenant is `parser`.
+2. A report goes under its tenant's cause (`causes.ts`): a form report from a booking-v3 tenant
+   that writes the day first is `hint`; any other report from a day-first tenant is `parser`.
+3. A report the desk read differently (its notes) stays counted where it is filed, with a note
+   under the table.
 
 Intake's tag is not used: it guesses from the reporter's browser, not from the tenant.
 
 ## Why one ticket held them all
 
-[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports whose subject lines match. Most
-subject lines come in under more than one problem (the note under the table counts them), so
-matching on subjects cannot keep these problems apart. Changing that rule needs a new decision record; 0001
-stays as accepted.
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) merges reports whose subject lines match. The
+same subject lines come in for different problems, so matching on subjects cannot keep these
+problems apart. Changing that rule needs a new decision record; 0001 stays as accepted.
 
 ## While the desk keeps merging
 
